@@ -1,5 +1,6 @@
 from random import choice
-
+# np.random.normal() generates random numbers that follow a bell curve
+import numpy as np
 
 class RandomWalk:
 
