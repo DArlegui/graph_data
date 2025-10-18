@@ -1,4 +1,4 @@
-# Sitka Death, Valley Comparison
+# Sitka daily rainfall amounts graph
 import matplotlib.pyplot as plt
 from pathlib import Path
 from datetime import datetime
