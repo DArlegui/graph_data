@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
-from classes.cube import Cube
-from func.plotting import plot_cube
+from classes.cube import Cube, plot_cube
 
 """Simulating Cube"""
 plt.style.use("dark_background")

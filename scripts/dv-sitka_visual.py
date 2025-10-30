@@ -1,30 +1,12 @@
 # Death Valley - Sikta (Temp Comparison)
-from pathlib import Path
-import csv
-from datetime import datetime
 import matplotlib.pyplot as plt
+from func.csv_plotting import captureTempsDate
 
-def captureTempsDate(file_name: str, index: int) -> tuple[list, list]:
-    path = Path(file_name)
-    lines = path.read_text().splitlines()
-    reader = csv.reader(lines)
+dv_path = "./weather_data/death_valley_2021_full.csv"
+s_path = "./weather_data/sitka_weather_2021_full.csv"
 
-    dates, highs = [], []
-
-    for row in reader:
-        try:
-            current_date = datetime.strptime(row[2], "%Y-%m-%d")
-            high = int(row[index])
-        except ValueError:
-            print(f"Missing data for {row[2]}")
-        else:
-            dates.append(current_date)
-            highs.append(high)
-
-    return dates, highs
-
-dv_dates, dv_highs = captureTempsDate("./weather_data/death_valley_2021_full.csv", 6)
-s_dates, s_highs = captureTempsDate("./weather_data/sitka_weather_2021_full.csv", 7)
+dv_dates, dv_highs = captureTempsDate(dv_path, 2, 6)
+s_dates, s_highs = captureTempsDate(s_path, 2, 7)
 
 # Merge and remove duplicates
 # all_dates = sorted(set(dv_dates) | set(s_dates))

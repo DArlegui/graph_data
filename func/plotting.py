@@ -1,4 +1,4 @@
-#plotting.py
+# plotting.py
 import matplotlib.pyplot as plt
 from classes.random_walk import RandomWalk
 
@@ -22,18 +22,7 @@ def set_ax_fig_randomplot(ax, rw):
 
     return ax
 
-"""Plotting Functions"""
-def plot_cube(cube, ax=None, **line_kwargs):
-    fig, ax = get_fig_ax(ax)
-
-    ax.plot(cube.x_values, cube.y_values, **line_kwargs)
-    ax.set_title("Cubed Numbers")
-    ax.set_xlabel("Value")
-    ax.set_ylabel("Cubed Value")
-    ax.tick_params(labelsize=14)
-
-    return fig, ax
-
+"""Scatter Graph (rw, mm)"""
 def plot_molecular(rw: RandomWalk, ax=None):
     fig, ax = get_fig_ax(ax)
     ax.plot(rw.x_values, rw.y_values, color='green', linewidth=1)

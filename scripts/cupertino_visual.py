@@ -1,29 +1,10 @@
 # Cupertino Weather Data 2024 - 2025
 import matplotlib.pyplot as plt
-from datetime import datetime
-from pathlib import Path
-import csv
+from func.csv_plotting import captureTempsDate, printHeaders
 
-path = Path('./weather_data/cupertino_2024.csv')
-lines = path.read_text().splitlines()
-reader = csv.reader(lines)
-header_row = next(reader)
-
-for index, column_header in enumerate(header_row): # Checks for first ele of reader
-    print(index, column_header)
-
-dates, highs, lows = [], [], []
-for row in reader:
-    try:
-        current_date = datetime.strptime(row[2], '%Y-%m-%d')
-        high = int(row[5])
-        low = int(row[6])
-    except ValueError:
-        print(f'Cannot find {current_date} data')
-    else:
-        dates.append(current_date)
-        highs.append(high)
-        lows.append(low)
+file_path = "./weather_data/cupertino_2024.csv"
+printHeaders(file_path)
+dates, highs, lows = captureTempsDate(file_path, 2, 5, 6)
 
 # Plot the high and low temperatures.
 plt.style.use("seaborn-v0_8")
